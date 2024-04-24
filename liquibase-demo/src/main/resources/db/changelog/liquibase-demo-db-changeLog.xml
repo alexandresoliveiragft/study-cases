@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    <changeSet id="1" author="Alexandre Salvador de Oliveira">
+        <createTable tableName="tbl_users">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+            <column name="e_mail" type="varchar(100)">
+                <constraints unique="true" />
+            </column>
+            <column name="password" type="varchar(60)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="tbl_users" />
+        </rollback>
+    </changeSet>
+    <changeSet id="2" author="Alexandre Salvador de Oliveira">
+        <createTable tableName="tbl_todos">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+            <column name="description" type="text" />
+            <column name="date" type="timestamptz" />
+            <column name="is_finished" type="boolean" defaultOnNull="false" />
+        </createTable>
+        <rollback>
+            <dropTable tableName="tbl_todos" />
+        </rollback>
+    </changeSet>
+    <changeSet id="3" author="Alexandre Salvador de Oliveira">
+        <insert tableName="tbl_users" schemaName="public">
+            <column name="id">c04f4ab5-aef0-4fc6-82d8-411f74f967b8</column>
+            <column name="name">Alexandre Salvador de Oliveira</column>
+            <column name="e_mail">alexandre@email.com</column>
+            <column name="password">233</column>
+        </insert>
+        <rollback>
+            <delete tableName="tbl_users" schemaName="public">
+                <where>id = 'c04f4ab5-aef0-4fc6-82d8-411f74f967b8'</where>
+            </delete>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

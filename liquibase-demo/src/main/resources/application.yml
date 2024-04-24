@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: liquibase-demo
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://localhost:5432/liquibase-demo-db
+    username: dev
+  liquibase:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/liquibase-demo-db
+    user: dev
+    change-log: classpath:db/changelog/liquibase-demo-db-changeLog.xml
