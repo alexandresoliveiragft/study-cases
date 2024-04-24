@@ -3,11 +3,9 @@ package dev.alexandreoliveira.studycase.liquibasedemo.database.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.id.UUIDGenerator;
 import org.hibernate.id.uuid.UuidGenerator;
 
 import java.util.Objects;
